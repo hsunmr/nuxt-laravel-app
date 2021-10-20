@@ -33,10 +33,9 @@ export default {
         }
     },
     middleware({ store, redirect }) {
-      // If the user is authenticated
-      if (!this.$auth.loggedIn) {
-        return redirect('/')
-      }
+        if (store.state.auth.loggedIn) {
+            return redirect('/')
+        }
     }
 }
 </script>
