@@ -30,6 +30,7 @@
 
 <script>
 export default {
+    layout: 'blank',
     data(){
         return {
             email: '',
