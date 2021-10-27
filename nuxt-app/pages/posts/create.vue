@@ -1,6 +1,6 @@
 <template>
     <div class="relative container mx-auto h-full w-full sm:w-5/6 md:w-3/6 bg-gray-100 pt-10" style="top:70px">
-        <div class="w-full space-y-8">
+        <div class="p-3 w-full space-y-8">
             <div>
                 <h2 class="text-center text-3xl font-extrabold text-gray-900">
                     新增貼文

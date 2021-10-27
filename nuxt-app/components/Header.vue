@@ -15,6 +15,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
+                    <nuxt-link to="/" class="text-yellow-400 px-3 py-2 font-bold rounded-md text-sm font-medium">Home</nuxt-link>
                 </div>
                 <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="hidden sm:block sm:ml-6">
