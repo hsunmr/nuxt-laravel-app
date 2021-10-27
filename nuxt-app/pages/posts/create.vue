@@ -43,7 +43,7 @@ export default {
     methods: {
         submit(){
             this.$axios
-                .post('http://localhost:8000/api/posts', {
+                .post(`${process.env.backend_url}/api/posts`, {
                     title  : this.title,
                     content: this.content,
                 })

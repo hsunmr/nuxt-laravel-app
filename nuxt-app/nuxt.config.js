@@ -48,7 +48,7 @@ export default {
     strategies: {
       'laravelJWT': {
         provider: 'laravel/jwt',
-        url: 'http://localhost:8000',
+        url: process.env.BACKEND_URL || 'http://localhost:8000',
         token: {
           property: 'access_token',
           maxAge: 60 * 60
@@ -58,5 +58,8 @@ export default {
         },
       },
     }
+  },
+  env: {
+    backend_url: process.env.BACKEND_URL || 'http://localhost:8000'
   }
 }

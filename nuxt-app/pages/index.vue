@@ -30,8 +30,8 @@ export default {
       posts : []
     }
   },
-  async asyncData() {
-    let { data } = await axios.get('http://localhost:8000/api/posts');
+  async asyncData({env}) {
+    let { data } = await axios.get(`${env.backend_url}/api/posts`);
 
     return {
       posts : data

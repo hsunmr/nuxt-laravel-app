@@ -49,7 +49,7 @@ export default {
   methods: {
     register(){
       this.$axios
-        .post('http://localhost:8000/api/auth/register', {
+        .post(`${process.env.backend_url}/api/auth/register`, {
           name                 : this.name,
           email                : this.email,
           password             : this.password,
