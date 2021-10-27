@@ -14,7 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::orderByDesc('id')->get();
+        return Post::with('user')
+            ->orderByDesc('id')
+            ->get();
     }
 
     /**
@@ -49,7 +51,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return Post::find($id);
+        return Post::with('user')->findOrFail($id);
     }
 
     /**
@@ -61,6 +63,12 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        if ($request->user()->cannot('update', $post)) {
+            return response([
+                'message' => 'Forbidden'
+            ], 403);
+        }
+
         $fields = $request->validate([
             'title'   => 'required|string',
             'content' => 'required|string',
