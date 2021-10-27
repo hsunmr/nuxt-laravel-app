@@ -1,7 +1,50 @@
 <template>
-    <div class="relative container mx-auto h-full w-full sm:w-5/6 md:w-3/6 bg-gray-100 border-2 border-gray-300" style="top:70px">
-        <div>
-            edit
-        </div>
+    <div>
+        <Form page_title="編輯貼文" :title="title" :content="content" @confirm="submit"/>
     </div>
 </template>
+<script>
+import axios from 'axios';
+export default {
+    data(){
+        return {
+            title  : '',
+            content: ''
+        }
+    },
+    async asyncData({ store, redirect, route, env }) {
+        let { data } = await axios.get(`${env.backend_url}/api/posts/${route.params.id}`);
+
+        // not user
+        if (store.state.auth.user.id != data.user.id) {
+           return redirect('/')
+        }
+
+        return {
+            title  : data.title,
+            content: data.content
+        }
+    },
+    methods: {
+        submit(title, content){
+            this.$axios
+                .put(`${process.env.backend_url}/api/posts/${this.$route.params.id}`, {
+                    title  : title,
+                    content: content,
+                })
+                .then(function (response) {
+                    alert('更新成功');
+                    location.href = '/';
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    },
+    middleware({ store, redirect, route }) {
+        if (!store.state.auth.loggedIn) {
+            return redirect('/login')
+        }
+    }
+}
+</script>

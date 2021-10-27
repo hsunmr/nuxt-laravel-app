@@ -6,6 +6,10 @@
             <div class="content pt-5">
                 {{post.content}}
             </div>
+            <div v-if="this.$auth.user.id == post.user.id" class="grid grid-cols-2 gap-4 mt-10">
+                <nuxt-link :to="{ name: 'posts-id-edit', params: { id: post.id }}"><div class="p-6 bg-yellow-300 hover:bg-yellow-200 text-gray-700 rounded text-center">編輯</div></nuxt-link>
+                <button @click="delete_post()" class="p-6 bg-red-300 hover:bg-red-200 text-gray-700 rounded text-center">刪除</button>
+            </div>
         </div>
     </div>
 </template>
@@ -17,13 +21,27 @@ export default {
             post: []
         }
     },
+    methods: {
+        delete_post(){
+            if (window.confirm("確定要刪除此貼文?")) {
+                this.$axios
+                    .delete(`${process.env.backend_url}/api/posts/${this.$route.params.id}`)
+                    .then(function (response) {
+                        alert('刪除成功');
+                        location.href = '/';
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            }
+        }
+    },
     async asyncData({ route, env }) {
         let { data } = await axios.get(`${env.backend_url}/api/posts/${route.params.id}`);
 
         return {
             post : data
         }
-
     },
 }
 </script>
