@@ -26,7 +26,7 @@
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 
                     <div v-if="this.$auth.loggedIn" class="hidden sm:block text-gray-100">
-                        <button class="text-yellow-400 hover:text-white"><i class="material-icons align-top">add_circle_outline</i> 新增貼文</button>
+                        <nuxt-link to="posts/create" class="text-yellow-400 hover:text-white"><i class="material-icons align-top">add_circle_outline</i> 新增貼文</nuxt-link>
                     </div>
 
                     <!-- Profile dropdown -->
@@ -69,7 +69,7 @@
         <!-- Mobile menu, show/hide based on menu state. -->
         <div v-show="nav_is_active" class="sm:hidden " id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 text-white">
-               <button class="text-yellow-400 hover:text-white"><i class="material-icons align-top">add_circle_outline</i> 新增貼文</button>
+               <nuxt-link to="posts/create" class="text-yellow-400 hover:text-white"><i class="material-icons align-top">add_circle_outline</i> 新增貼文</nuxt-link>
             </div>
         </div>
     </nav>

@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
   layout: 'blank',
   data(){
@@ -49,7 +48,7 @@ export default {
   },
   methods: {
     register(){
-      axios
+      this.$axios
         .post('http://localhost:8000/api/auth/register', {
           name                 : this.name,
           email                : this.email,
