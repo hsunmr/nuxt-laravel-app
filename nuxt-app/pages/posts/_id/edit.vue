@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Form page_title="編輯貼文" :title="title" :content="content" @confirm="submit"/>
+        <Form page_title="編輯貼文" :title="title" :content="content" @confirm="submit" ref="post_form" />
     </div>
 </template>
 <script>
@@ -27,6 +27,7 @@ export default {
     },
     methods: {
         submit(title, content){
+            let _this = this;
             this.$axios
                 .put(`${process.env.backend_url}/api/posts/${this.$route.params.id}`, {
                     title  : title,
@@ -37,7 +38,10 @@ export default {
                     location.href = '/';
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    if (error.response.data.errors) {
+                        _this.$refs.post_form.setErrors(error.response.data.errors);
+                        return;
+                    }
                 });
         }
     },

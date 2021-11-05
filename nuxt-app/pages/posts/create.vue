@@ -1,10 +1,15 @@
 <template>
     <div>
-        <Form page_title="新增貼文" :title="title" :content="content" @confirm="submit"/>
+        <Form page_title="新增貼文" :title="title" :content="content" @confirm="submit" ref="post_form"/>
     </div>
 </template>
 <script>
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
 export default {
+    components: {
+    ValidationProvider,
+    ValidationObserver
+  },
     data(){
         return {
             title  : '',
@@ -13,6 +18,7 @@ export default {
     },
     methods: {
         submit(title, content){
+            let _this = this;
             this.$axios
                 .post(`${process.env.backend_url}/api/posts`, {
                     title  : title,
@@ -23,7 +29,10 @@ export default {
                     location.href = '/';
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    if (error.response.data.errors) {
+                        _this.$refs.post_form.setErrors(error.response.data.errors);
+                        return;
+                    }
                 });
         }
     },
