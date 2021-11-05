@@ -22,6 +22,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '@/plugins/vee-validate'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -43,6 +44,16 @@ export default {
   axios: {
   },
   build: {
+    // Add exception
+    transpile: [
+      "vee-validate/dist/rules"
+    ],
+    /*
+      ** You can extend webpack config here
+      */
+    extend(config, ctx) {
+      // ...
+    }
   },
   auth: {
     strategies: {
