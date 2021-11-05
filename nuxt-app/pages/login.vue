@@ -41,16 +41,6 @@
 
     </div>
 </template>
-<style>
-.error_message {
-    color:red;
-    font-size: 14px;
-}
-.input_field.invalid input{
-    color: red;
-    border: 1px solid red;
-}
-</style>
 <script>
 import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
