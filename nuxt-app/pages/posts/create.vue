@@ -25,8 +25,15 @@ export default {
                     content: content,
                 })
                 .then(function (response) {
-                    alert('新增成功');
-                    location.href = '/';
+                    _this.swal.fire({
+                        title            : '新增成功',
+                        confirmButtonText: '確定',
+                        icon             : 'success'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.href = '/';
+                        }
+                    });
                 })
                 .catch(function (error) {
                     if (error.response.data.errors) {

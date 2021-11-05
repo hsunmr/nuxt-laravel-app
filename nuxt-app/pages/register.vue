@@ -86,8 +86,15 @@ export default {
           password_confirmation: this.password_confirmation
         })
         .then(function (response) {
-          alert('註冊成功');
-          location.href = '/login';
+          _this.swal.fire({
+            title            : '註冊成功',
+            confirmButtonText: '確定',
+            icon             : 'success'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              location.href = '/login';
+            }
+          });
         })
         .catch(function (error) {
           if (error.response.data.errors) {

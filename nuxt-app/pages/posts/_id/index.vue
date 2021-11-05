@@ -23,17 +23,33 @@ export default {
     },
     methods: {
         delete_post(){
-            if (window.confirm("確定要刪除此貼文?")) {
-                this.$axios
-                    .delete(`${process.env.backend_url}/api/posts/${this.$route.params.id}`)
-                    .then(function (response) {
-                        alert('刪除成功');
-                        location.href = '/';
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            }
+            let _this = this;
+            this.swal.fire({
+                title            : '確定要刪除此貼文?',
+                confirmButtonText: '確定',
+                cancelButtonText : '取消',
+                icon             : 'question',
+                showCancelButton : true,
+            }).then(function (result) {
+                if (result.isConfirmed) {
+                    _this.$axios
+                        .delete(`${process.env.backend_url}/api/posts/${_this.$route.params.id}`)
+                        .then(function (response) {
+                            _this.swal.fire({
+                                title            : '刪除成功',
+                                confirmButtonText: '確定',
+                                icon             : 'success'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    location.href = '/';
+                                }
+                            });
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }
+            })
         }
     },
     async asyncData({ route, env }) {
