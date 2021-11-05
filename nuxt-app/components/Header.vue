@@ -59,8 +59,8 @@
 
                             </div>
                         <div v-else>
-                            <nuxt-link to="login" class="bg-white hover:bg-gray-100 hover:text-gray-600 py-2 px-4 rounded">Login</nuxt-link>
-                            <nuxt-link to="register" class="bg-white hover:bg-gray-100 hover:text-gray-600 py-2 px-4 rounded">Register</nuxt-link>
+                            <nuxt-link to="/login" class="bg-white hover:bg-gray-100 hover:text-gray-600 py-2 px-4 rounded">Login</nuxt-link>
+                            <nuxt-link to="/register" class="bg-white hover:bg-gray-100 hover:text-gray-600 py-2 px-4 rounded">Register</nuxt-link>
                         </div>
                     </div>
                 </div>

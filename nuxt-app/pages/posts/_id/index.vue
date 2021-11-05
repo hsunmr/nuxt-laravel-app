@@ -6,7 +6,7 @@
             <div class="content pt-5">
                 {{post.content}}
             </div>
-            <div v-if="this.$auth.user.id == post.user.id" class="grid grid-cols-2 gap-4 mt-10">
+            <div v-if="this.$auth.loggedIn && (this.$auth.user.id == post.user.id)" class="grid grid-cols-2 gap-4 mt-10">
                 <nuxt-link :to="{ name: 'posts-id-edit', params: { id: post.id }}"><div class="p-6 bg-yellow-300 hover:bg-yellow-200 text-gray-700 rounded text-center">編輯</div></nuxt-link>
                 <button @click="delete_post()" class="p-6 bg-red-300 hover:bg-red-200 text-gray-700 rounded text-center">刪除</button>
             </div>
