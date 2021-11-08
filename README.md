@@ -1,13 +1,13 @@
-### Nuxt x Laravel application
+## Nuxt x Laravel application
 > a posts application, frontend use nuxt.js, backend use laravel
 
-#### Usage
+## Usage
 **Laravel (Backend)**
 
--- STEP1
+**step1**
 create a mysql database
 
--- STEP2
+**step2**
 set env file
 ```
 cd nuxt-laravel-app/laravel-backend
@@ -34,7 +34,7 @@ php artisan jwt:secret
 # migrate tables
 php artisan migrate
 ```
--- STEP3
+**step3**
 run serve
 Starting Laravel development server: http://127.0.0.1:8000
 ```
@@ -59,5 +59,5 @@ npm install
 npm run dev
 ```
 
-#### DEMO
+## DEMO
 https://nuxt-frontend-app.herokuapp.com/
