@@ -4,10 +4,11 @@
 ## Usage
 **Laravel (Backend)**
 
-**step1**
+
+**step1**  
 create a mysql database
 
-**step2**
+**step2**  
 set env file
 ```
 cd nuxt-laravel-app/laravel-backend
@@ -34,15 +35,16 @@ php artisan jwt:secret
 # migrate tables
 php artisan migrate
 ```
-**step3**
-run serve
-Starting Laravel development server: http://127.0.0.1:8000
+**step3**  
+run serve  
+
 ```
 php artisan serve
 ```
+Starting Laravel development server: http://127.0.0.1:8000
 
-**Nuxt (Frontend)**
-Listening on: http://localhost:9528/
+**Nuxt (Frontend)**  
+
 ```
 cd nuxt-laravel-app/nuxt-app
 
@@ -58,6 +60,7 @@ npm install
 #run dev
 npm run dev
 ```
+Listening on: http://localhost:9528/
 
 ## DEMO
 https://nuxt-frontend-app.herokuapp.com/
